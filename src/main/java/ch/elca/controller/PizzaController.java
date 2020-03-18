@@ -44,6 +44,10 @@ public class PizzaController {
 
     }
 
+    /*
+    *          FOLLOWS SAME LOGIC SA THE ORDER MAPPING ONLY DIFFERENCE IS THAT THE
+    *
+    * */
     @GetMapping("/bill")
     @ResponseBody
     public CheckOut getBill(@RequestParam(name = "type", required = true) PizzaType type,
