@@ -53,11 +53,4 @@ public class PizzaController {
 
         return pizzaService.getBill(Pizza.builder().type(type).base(base).toppings(toppings).quantity(quantity).build());
     }
-
-
-    @GetMapping("/test")
-    @ResponseBody
-    public String getme(){
-        return pizzaService.tellme();
-    }
 }

@@ -38,8 +38,4 @@ public class PizzaServiceImpl implements PizzaService {
 
         return CheckOut.builder().pizza(order).price(price).build();
     }
-
-    public String tellme() {
-        return Price.CHEESE.name();
-    }
 }
