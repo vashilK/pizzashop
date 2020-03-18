@@ -32,8 +32,12 @@ public class PizzaServiceImpl implements PizzaService {
             }
         }
 
-        price += Arrays.stream(Price.values()).anyMatch(t -> t.name().equals(order.getType().toString())) ? Price.valueOf(order.getType().toString()).getValue() : 0;
-        price += Arrays.stream(Price.values()).anyMatch(t -> t.name().equals(order.getBase().toString())) ? Price.valueOf(order.getBase().toString()).getValue() : 0;
+        price += Arrays.stream(Price.values()).anyMatch(t -> t.name().equals(order.getType().toString())) ?
+                Price.valueOf(order.getType().toString()).getValue() : 0;
+
+        price += Arrays.stream(Price.values()).anyMatch(t -> t.name().equals(order.getBase().toString())) ?
+                Price.valueOf(order.getBase().toString()).getValue() : 0;
+
         price = price *  order.getQuantity();
 
         return CheckOut.builder().pizza(order).price(price).build();
