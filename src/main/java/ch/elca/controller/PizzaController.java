@@ -45,7 +45,8 @@ public class PizzaController {
     }
 
     /*
-    *          FOLLOWS SAME LOGIC SA THE ORDER MAPPING ONLY DIFFERENCE IS THAT THE
+    *          FOLLOWS SAME LOGIC SA THE ORDER MAPPING ONLY DIFFERENCE IS THAT THE FUNCTION INSIDE THE
+    *                   SERVICE TAKES PIZZA DIRECTLY
     *
     * */
     @GetMapping("/bill")
@@ -54,7 +55,10 @@ public class PizzaController {
                             @RequestParam(name = "base", required = true) Base base,
                             @RequestParam(name = "toppings", required = false) List<Toppings> toppings,
                             @RequestParam(name = "quantity", required = true) int quantity) {
-
-        return pizzaService.getBill(Pizza.builder().type(type).base(base).toppings(toppings).quantity(quantity).build());
+        try {
+            return pizzaService.getBill(Pizza.builder().type(type).base(base).toppings(toppings).quantity(quantity).build());
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Hello please make use of enums. (^_^)");
+        }
     }
 }
